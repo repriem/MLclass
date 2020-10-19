@@ -6,7 +6,7 @@ for k in range(n_iter):
     f_min_k = np.min(y_data)
     gpr.set_training_values(x_data, y_data)
     gpr.train()
-    obj_k = lambda x: -EI(gpr,np.atleast_2d(x),f_min_k)
+    obj_k = lambda x: float(-EI(gpr,np.atleast_2d(x),f_min_k))
     ## UNCOMMENT ONE OF THE INFILL CRITERIA
     # obj_k = lambda x: -EI(gpr,np.atleast_2d(x),f_min_k)
     # obj_k = lambda x: SBO(gpr,np.atleast_2d(x))
@@ -27,4 +27,3 @@ for k in range(n_iter):
 ind_best = np.argmin(y_data)
 x_opt = x_data[ind_best]
 y_opt = y_data[ind_best]
-
